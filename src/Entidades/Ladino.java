@@ -1,3 +1,4 @@
+package Entidades;
 
 public class Ladino extends Entidade {
 

@@ -1,3 +1,4 @@
+package Entidades;
 
 public abstract class Entidade {
 
@@ -21,45 +22,61 @@ public abstract class Entidade {
     }
 
     // setters
-    void setNAME(String name) {
+    public void setNAME(String name) {
         this.name = name;
     }
 
-    void setHP(int hp) {
+    public void setHP(int hp) {
         this.hp = hp;
     }
 
-    void setMANA(int mana) {
+    public void setMANA(int mana) {
         this.mana = mana;
     }
 
-    void setSPEED(int speed) {
+    public void setSPEED(int speed) {
         this.speed = speed;
     }
 
-    void setRESISTENCE(int resistence) {
+    public void setRESISTENCE(int resistence) {
         this.resistence = resistence;
     }
 
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     //getters
-    String getNAME() {
+    public String getNAME() {
         return this.name;
     }
 
-    int getHP() {
+    public int getHP() {
         return this.hp;
     }
 
-    int getMANA() {
+    public int getMANA() {
         return this.mana;
     }
 
-    int getSPEED() {
+    public int getSPEED() {
         return this.speed;
     }
 
-    int getRESISTENCE() {
+    public int getRESISTENCE() {
         return this.resistence;
+    }
+
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
     }
 
     //Calculo simples de dano para teste
@@ -70,7 +87,7 @@ public abstract class Entidade {
 
     public void receberDano(int dano) {
 
-        this.hp = this.hp - dano;
+        this.hp = this.hp - calculoDANO(dano);
 
         if (this.hp < 0) {
             this.hp = 0;
