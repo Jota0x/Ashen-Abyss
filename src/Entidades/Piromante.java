@@ -1,9 +1,13 @@
 package Entidades;
 
+import Habilidades.*;
+
 public class Piromante extends Entidade {
 
     public Piromante() {
         super("Piromante", 80, 80, 30, 5);
+        adicionarHabilidade(new BolaDeFogo());
+        adicionarHabilidade(new Curar());
     }
 
     @Override

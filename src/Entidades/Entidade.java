@@ -1,5 +1,10 @@
 package Entidades;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import Habilidades.Habilidade;
+
 public abstract class Entidade {
 
     private String name;
@@ -7,7 +12,7 @@ public abstract class Entidade {
     private int mana;
     private int speed;
     private int resistence;
-    private int x, y;  //posicao da entidade no mapa
+    private int x, y; // posicao da entidade no mapa
 
     public Entidade() {
     }
@@ -50,7 +55,7 @@ public abstract class Entidade {
         this.y = y;
     }
 
-    //getters
+    // getters
     public String getNAME() {
         return this.name;
     }
@@ -79,7 +84,7 @@ public abstract class Entidade {
         return this.y;
     }
 
-    //Calculo simples de dano para teste
+    // Calculo simples de dano para teste
     public int calculoDANO(int dano) {
         dano -= resistence;
         return dano;
@@ -98,6 +103,29 @@ public abstract class Entidade {
         if (this.hp == 0) {
             System.out.println("☠️ " + getNAME() + " sucumbiu ao abismo...");
         }
+    }
+
+    public void receberCura(int quantidade) {
+        this.hp += quantidade;
+        System.out.println(getNAME() + " recuperou " + quantidade + " HP! HP atual: " + getHP());
+    }
+
+    private List<Habilidade> habilidades = new ArrayList<>();
+
+    public void adicionarHabilidade(Habilidade h) {
+        habilidades.add(h);
+    }
+
+    public List<Habilidade> getHabilidades() {
+        return habilidades;
+    }
+
+    public void usarHabilidade(int indice, Entidade alvo) {
+        if (indice < 0 || indice >= habilidades.size()) {
+            System.out.println("Habilidade inválida!");
+            return;
+        }
+        habilidades.get(indice).executar(this, alvo);
     }
 
     public abstract void ATK(int ataque, Entidade alvo);

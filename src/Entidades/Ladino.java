@@ -1,13 +1,17 @@
 package Entidades;
 
+import Habilidades.*;
+
 public class Ladino extends Entidade {
 
-//Cosntrutor inicial de Ladino
+    // Cosntrutor inicial de Ladino
     public Ladino() {
         super("Ladino", 100, 50, 30, 10);
+        adicionarHabilidade(new Punhalada());
+        adicionarHabilidade(new GolpeSombrio());
     }
 
-    //Classe ataque para teste
+    // Classe ataque para teste
     @Override
     public void ATK(int ataque, Entidade alvo) {
 
